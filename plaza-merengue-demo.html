@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaza Merengue — Bonao desde 1980</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crema: #FBF6EA;
+    --crema-2: #FFFDF7;
+    --morado: #15110F;
+    --coral: #C9A227;
+    --turquesa: #221C17;
+    --mostaza: #E8C468;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--crema); color:var(--morado); font-family:'Inter',sans-serif; line-height:1.6; }
+  h1,h2,h3 { font-family:'Baloo 2',sans-serif; font-weight:700; line-height:1.15; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 32px; }
+  .eyebrow { font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--coral); }
+
+  nav { position:sticky; top:0; z-index:50; background:var(--morado); border-bottom:2px solid var(--coral); }
+  nav .wrap { display:flex; justify-content:space-between; align-items:center; padding:16px 32px; }
+  .logo { font-size:1.4rem; color:var(--crema); }
+  .nav-links { display:flex; gap:26px; font-size:0.92rem; font-weight:500; color: var(--crema); }
+  .nav-links a:hover { color:var(--coral); }
+  .nav-cta { background:var(--coral); color:#fff; padding:10px 20px; border-radius:24px; font-weight:600; font-size:0.88rem; }
+  @media (max-width:720px){ .nav-links{display:none;} }
+
+  .hero { background:var(--morado); color:var(--crema); padding:90px 0 80px; position:relative; overflow:hidden; }
+  .hero .eyebrow { color:var(--mostaza); display:block; margin-bottom:16px; }
+  .hero h1 { font-size:clamp(2.4rem,5.8vw,4rem); max-width:700px; margin-bottom:20px; }
+  .hero p.lede { max-width:500px; font-size:1.05rem; color:rgba(255,248,237,0.82); margin-bottom:30px; }
+  .hero-meta { display:flex; gap:26px; flex-wrap:wrap; margin-bottom:30px; }
+  .hero-meta .item { font-family:'IBM Plex Mono',monospace; font-size:0.8rem; }
+  .hero-meta .item strong { display:block; font-size:1.3rem; color:var(--mostaza); margin-bottom:2px; font-family:'Baloo 2',sans-serif; }
+  .hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary { background:var(--coral); color:#fff; padding:14px 28px; border-radius:26px; font-weight:600; }
+  .btn-secondary { border:2px solid var(--mostaza); color:var(--mostaza); padding:12px 26px; border-radius:26px; font-weight:600; }
+
+  .zigzag { height:26px; background:
+    linear-gradient(135deg, var(--coral) 25%, transparent 25%) -13px 0/26px 26px,
+    linear-gradient(225deg, var(--coral) 25%, transparent 25%) -13px 0/26px 26px,
+    linear-gradient(315deg, var(--morado) 25%, transparent 25%) 0 0/26px 26px,
+    linear-gradient(45deg, var(--morado) 25%, var(--mostaza) 25%) 0 0/26px 26px;
+  }
+
+  .about { padding:90px 0; }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  .about h2 { font-size:2.2rem; margin:12px 0 20px; color:var(--turquesa); }
+  .about p { color:#4a3f4c; margin-bottom:14px; max-width:460px; }
+  .amenity-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+  .amenity-pill { border:1.5px solid var(--turquesa); color:var(--turquesa); padding:8px 16px; border-radius:20px; font-family:'IBM Plex Mono',monospace; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .fact-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .fact-card { background:var(--crema-2); border-radius:14px; padding:22px; box-shadow:0 2px 10px rgba(61,33,64,0.08); border:1px solid rgba(61,33,64,0.08); }
+  .fact-card svg { width:26px; height:26px; color:var(--coral); margin-bottom:10px; }
+  .fact-card .label { font-family:'IBM Plex Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:#9a8ea0; display:block; margin-bottom:4px; }
+  .fact-card .value { font-weight:600; }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+
+  .menu-section { background:var(--turquesa); color:#fff; padding:90px 0; }
+  .menu-section .eyebrow { color:#D6F0EB; }
+  .menu-section h2 { font-size:2.2rem; margin:12px 0 44px; max-width:580px; }
+  .menu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .dish-card { background:rgba(201,162,39,0.08); border:1px solid rgba(201,162,39,0.18); border-radius:14px; padding:26px 20px; }
+  .dish-name { font-family:'Baloo 2',sans-serif; font-size:1.15rem; margin-bottom:6px; }
+  .dish-desc { color:rgba(255,255,255,0.78); font-size:0.9rem; }
+  @media (max-width:800px){ .menu-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .menu-grid{ grid-template-columns:1fr; } }
+
+  .contact { background:var(--morado); color:var(--crema); padding:90px 0; }
+  .contact-grid { display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; }
+  .contact h2 { font-size:2.2rem; margin-bottom:20px; }
+  .contact-list { list-style:none; margin-top:26px; }
+  .contact-list li { padding:15px 0; border-top:1px solid rgba(201,162,39,0.2); display:flex; justify-content:space-between; font-size:0.94rem; }
+  .contact-list li:last-child { border-bottom:1px solid rgba(201,162,39,0.2); }
+  .contact-list .label { color:rgba(255,248,237,0.5); font-family:'IBM Plex Mono',monospace; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; }
+  .hours-box { background:rgba(0,0,0,0.25); border:1px solid rgba(201,162,39,0.25); border-radius:12px; padding:28px; }
+  .hours-box h3 { font-family:'IBM Plex Mono',monospace; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--mostaza); margin-bottom:16px; font-weight:500; }
+  .hours-row { display:flex; justify-content:space-between; padding:7px 0; font-size:0.9rem; color:rgba(255,248,237,0.85); }
+  @media (max-width:800px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  footer { padding:28px 0; text-align:center; font-size:0.82rem; color:var(--mostaza); background:var(--morado); }
+  .demo-badge { position:fixed; bottom:18px; right:18px; background:var(--coral); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.05em; padding:9px 14px; border-radius:20px; z-index:100; box-shadow:0 4px 14px rgba(0,0,0,0.25); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">🍕 Plaza Merengue</div>
+    <div class="nav-links">
+      <a href="#sobre">Nosotros</a>
+      <a href="#menu">Menú</a>
+      <a href="#contacto">Ubicación</a>
+    </div>
+    <a href="tel:+18095253832" class="nav-cta">Llamar</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Restaurante y Pizzería</span>
+    <h1>El sabor que Bonao lleva celebrando por más de 40 años.</h1>
+    <p class="lede">Pizza a la leña, comida criolla y buen ambiente familiar, con área de juegos para los niños y un bar nuevo para los grandes.</p>
+    <div class="hero-meta">
+      <div class="item"><strong>Desde 1980</strong>tradición local</div>
+      <div class="item"><strong>4.4 ★</strong>valoración de clientes</div>
+      <div class="item"><strong>Familiar</strong>área de juegos</div>
+    </div>
+    <div class="hero-actions">
+      <a href="tel:+18095253832" class="btn-primary">Llamar ahora</a>
+      <a href="#menu" class="btn-secondary">Ver el menú</a>
+    </div>
+  </div>
+</section>
+
+<div class="zigzag"></div>
+
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">Sobre nosotros</span>
+      <h2>Una marca de Bonao, de generación en generación.</h2>
+      <p>Desde 1980, Plaza Merengue ha sido punto de encuentro para familias de Bonao — cumpleaños, aniversarios, y esa pizza de después de clases que todos recuerdan. Con el tiempo hemos sumado un bar nuevo, sushi los fines de semana, y seguimos manteniendo la misma calidez de siempre.</p>
+      <p>Contamos con área de juegos para los niños y terraza al aire libre, ideal para pasar la tarde en familia sin apuro.</p>
+      <div class="amenity-row">
+        <span class="amenity-pill">Área de juegos</span>
+        <span class="amenity-pill">Terraza</span>
+        <span class="amenity-pill">Delivery</span>
+        <span class="amenity-pill">Parqueo</span>
+      </div>
+    </div>
+    <div class="fact-cards">
+      <div class="fact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        <span class="label">Especialidad</span>
+        <div class="value">Pizza a la leña</div>
+      </div>
+      <div class="fact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
+        <span class="label">Ambiente</span>
+        <div class="value">Familiar + bar nuevo</div>
+      </div>
+      <div class="fact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M13.5 20c.3-2.4 2-4.4 4.3-4.9"/></svg>
+        <span class="label">Ideal para</span>
+        <div class="value">Celebraciones familiares</div>
+      </div>
+      <div class="fact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6-4.5-4.1 6-.7z"/></svg>
+        <span class="label">Trayectoria</span>
+        <div class="value">Más de 40 años en Bonao</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <span class="eyebrow">Lo más pedido</span>
+    <h2>Los sabores que Bonao no se cansa de pedir.</h2>
+    <div class="menu-grid">
+      <div class="dish-card"><div class="dish-name">Pizza a la leña</div><div class="dish-desc">En tamaños familiar, mediana y pequeña — la razón por la que muchos vienen.</div></div>
+      <div class="dish-card"><div class="dish-name">Chivo guisado</div><div class="dish-desc">Preparado al estilo de la casa, uno de los platos más pedidos por los clientes de siempre.</div></div>
+      <div class="dish-card"><div class="dish-name">Tres leches</div><div class="dish-desc">El postre clásico de la casa, infaltable para cerrar la comida.</div></div>
+      <div class="dish-card"><div class="dish-name">Cheesecake</div><div class="dish-desc">Otra opción dulce muy pedida por los visitantes.</div></div>
+      <div class="dish-card"><div class="dish-name">Churrasco</div><div class="dish-desc">Carne a la parrilla, ideal para compartir en familia.</div></div>
+      <div class="dish-card"><div class="dish-name">Sushi (vie–dom)</div><div class="dish-desc">Nueva propuesta los fines de semana, desde las 4:00 pm.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Visítanos</span>
+      <h2>Te esperamos en familia.</h2>
+      <ul class="contact-list">
+        <li><span class="label">Dirección</span><span>Av. Isabel la Católica, Zona Urbana, Bonao</span></li>
+        <li><span class="label">Teléfono</span><span>(809) 525-3832</span></li>
+        <li><span class="label">Reservas</span><span>(809) 525-7545</span></li>
+      </ul>
+    </div>
+    <div class="hours-box">
+      <h3>Horario</h3>
+      <div class="hours-row"><span>Todos los días</span><span>8:00 am – 11:30 pm</span></div>
+      <div class="hours-row"><span>Pizza · Lun–Vie</span><span>4:30 pm – 11:30 pm</span></div>
+      <div class="hours-row"><span>Pizza · Sáb–Dom</span><span>12:00 pm – 11:30 pm</span></div>
+      <div class="hours-row"><span>Sushi · Vie–Dom</span><span>4:00 pm – 11:30 pm</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Plaza Merengue — El sabor de Bonao desde 1980</footer>
+
+<div class="demo-badge">Diseño demo — no oficial</div>
+
+</body>
+</html>
